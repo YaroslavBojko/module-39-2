@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->lineEdit, &QLineEdit::textEdited, [this](QString currentText){
-        QRegularExpression exp("\\d+");
+        QRegularExpression exp("^\\+\\d{11}$");
         if(exp.match(currentText).hasMatch())
             setOklabel();
         else
@@ -29,7 +29,7 @@ void MainWindow::setOklabel()
 
 void MainWindow::setNonOkLabel()
 {
-    ui->label->setText("Fail");
+    ui->label->setText("Not Ok");
     ui->label->setStyleSheet("QLabel {color : red;}");
 }
 
